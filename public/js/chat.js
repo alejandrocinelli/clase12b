@@ -15,7 +15,7 @@ const renderChat = (chat) => {
     const html = chat.map ((msg) => {
         return (`
         
-        <p> <span>${msg.email} </span><span> ${msg.data}</span> <span> ${msg.message}</span>  </p>
+        <p> <span class="text-primary" >${msg.email} </span><span class="text-danger"> ${msg.data}</span> <span class="text-success" > ${msg.message}</span>  </p>
                 
         `);
 

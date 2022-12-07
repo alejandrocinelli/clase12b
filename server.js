@@ -3,6 +3,7 @@ import { Server as IOServer } from "socket.io";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { engine } from "express-handlebars";
+import fs from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -52,6 +53,7 @@ io.on("connection", (socket) => {
         //console.log(data);
         pruduct.push(data);
         io.emit("server:product", pruduct);
+        
     });
    
     socket.emit("server:message", messages);
@@ -60,6 +62,8 @@ io.on("connection", (socket) => {
         //console.log(data);
         messages.push(data);
         io.emit("server:message", messages);
+        // guardar los mensajes en un txt 
+        fs.writeFileSync("./public/chats/messages.txt", JSON.stringify(messages));
     })
     
 });
