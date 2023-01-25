@@ -5,6 +5,8 @@ import path , { dirname, join } from "path";
 import { engine } from "express-handlebars";
 import fs from "fs";
 import Contenedor from './api.js';
+import router  from "./public/routes/index.js";
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -57,9 +59,11 @@ app.engine(
   app.use(express.static("public"));
 
 // esto lo deberia haber hecho con un router 
-app.get("/", (req, res) => {
+/*app.get("/", (req, res) => {
     res.render("form");
-    });
+    });*/
+
+app.use("/", router);    
 
 const espressServer = app.listen(3000, () => {
   console.log("Server is running on port 3000");

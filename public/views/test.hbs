@@ -1,0 +1,29 @@
+<div class="text-center mt-3">
+    <h3>Lista de Productos</h3>
+</div>
+
+<div class="container mt-3">
+<div class="table-responsive p-2 ">
+      <table class="table table-hover table-sm table-bordered ">
+        <thead  class="" >
+          <tr class="border text-center " >
+            <th class="  ">Id</th>
+            <th class="  ">Nombre</th>
+            <th  class=" ">Precio</th>
+            <th class=" ">Img</th>
+                     </tr>
+        </thead>
+        {{#each items}}
+         <tr class=" text-center">
+            <td>{{this.id}}</td>
+            <td>{{this.title}}</td>
+            <td>${{this.price}}</td>
+            <td><img src={{this.thumbnail}} alt="producto" width="100px"></td>
+            
+            </tr>
+            {{/each}}
+  </table>
+
+</div>
+
+</div>
