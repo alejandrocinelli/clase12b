@@ -3,9 +3,9 @@ import generateFaker from '../../faker.js?';
 
 const router = Router();
 
-router.get("/form", (req, res) => {
+/*router.get("/form", (req, res) => {
     res.render("form");
-    });
+    });*/
 
 router.route('/api/productos-test').get(async (req, res) => {
         res.render('test', { items: generateFaker() })
@@ -30,8 +30,9 @@ router.route('/api/productos-test').get(async (req, res) => {
     })
 
     router.route('/logout').get(async (req, res) => {
+        let user = req.session.user
         req.session.destroy()
-        res.redirect('/')
+        res.render('logout', { user })
     })
 
 export default router;

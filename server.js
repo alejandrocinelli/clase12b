@@ -8,6 +8,7 @@ import Contenedor from './api.js';
 import router  from "./public/routes/index.js";
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
+import dotenv from 'dotenv';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,6 +17,7 @@ const __dirname = dirname(__filename);
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+dotenv.config();
 
 app.use(session({
   secret: 'coderhouse',
@@ -23,12 +25,13 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: new MongoStore({
-      mongoUrl: 'mongodb://localhost:27017',
+      mongoUrl: process.env.MONGO_URI,
   }),
   cookie: { 
     maxAge: 60000}
 }));
 
+//mongoUrl: 'mongodb://localhost:27017',
 //const pruduct   = [];
 //const messages = [];
 
